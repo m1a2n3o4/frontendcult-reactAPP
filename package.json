@@ -1,0 +1,20 @@
+{
+  "name": "frontcult-reactapp",
+  "version": "1.0.0",
+  "description": "this my first reactApp",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ractapp",
+    "javascript",
+    "jsx"
+  ],
+  "author": "manohar lotlapalli",
+  "license": "ISC",
+  "dependencies": {
+    "D": "^1.0.0",
+    "parcel": "^2.9.3"
+  }
+}
