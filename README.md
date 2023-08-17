@@ -4,6 +4,10 @@
 # npm install
 # npx parcel index.html
 
+# to start the project do run bellow commands
+npm install
+npm run start
+npm run build
 
 # Parecl
 - Dev Build.
