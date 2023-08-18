@@ -2,7 +2,8 @@
 
 # to run the app run
 # npm install
-# npx parcel index.html
+# npm run start
+# npm run buils
 
 # to start the project do run bellow commands
 npm install
