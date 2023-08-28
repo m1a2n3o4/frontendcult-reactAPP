@@ -1,8 +1,10 @@
+import  { SITE_LOGO } from "../utils/constants";
+
 const HeaderComponent = () => {
     return (
       <div className="header">
          <div className="logo">
-            <img src="https://img.freepik.com/premium-vector/online-food-app-icon-food-shop-location-logo-also-online-resturent-location-template_608547-155.jpg?w=100" alt="log"></img>
+            <img src={SITE_LOGO} alt="log"></img>
          </div>
          <div className="navitem">
             <ul>
