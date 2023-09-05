@@ -48,3 +48,14 @@ li {
     margin: 10px;
    
 }
+
+.shimmer-container {
+    display: flex;
+}
+
+.shimmer-card {
+    height: 300px;
+    width: 300px;
+    background-color: rgb(228, 212, 212);
+    margin: 20px;
+}

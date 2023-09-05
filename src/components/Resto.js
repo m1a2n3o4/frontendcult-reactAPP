@@ -3,7 +3,6 @@ import {PRODUCT_IMG_BASEURL} from "../utils/constants"
 const RestoComponent = (props) => {
     // console.log(props);
     const {restoData} = props;
-    console.log(restoData);
      return (
          <div className="resto">
              <img src= 
