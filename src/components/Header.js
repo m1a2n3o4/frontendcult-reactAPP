@@ -1,6 +1,5 @@
 import { useState } from "react";
 import  { SITE_LOGO } from "../utils/constants";
-import { Link } from "react-router-dom";
 
 const HeaderComponent = () => {
 
@@ -16,10 +15,10 @@ const HeaderComponent = () => {
          </div>
          <div className="navitem">
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/service">Services</Link></li>
-                <li><Link to="/topoffers">Top-offers</Link></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/service">Services</a></li>
+                <li><a href="/topoffers">Top-offers</a></li>
                 <li>My card</li>
                 <button className="btn" onClick={ () => {
                   btnName == "Login" ? setbtnName("Logout") : setbtnName("Login");

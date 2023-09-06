@@ -14,12 +14,10 @@ import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from "reac
 const AppLayout = () => {
     return (
          <div className="container-fluid">
-            <BrowserRouter>
             <HeaderComponent></HeaderComponent>
             {/* <BodyComponent></BodyComponent> */}
             <Outlet></Outlet>
             <FooterComponent></FooterComponent>
-            </BrowserRouter>
          </div>
     )
 };
