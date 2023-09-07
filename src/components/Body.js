@@ -1,6 +1,7 @@
 import RestoComponent from "./Resto";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import axios from 'axios';
  
 
 const BodyComponent = () => {
@@ -17,9 +18,9 @@ const BodyComponent = () => {
     }, []);
    
     const fectData = async() => {
-     // const resdata = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4241693&lng=78.3476283&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-    //  const orginalData = await resdata.json();
-      // const apiRestolist = orginalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+    //  const resdata = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4241693&lng=78.3476283&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+   //   const orginalData = await resdata.json();
+    // const apiRestolist = orginalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
      const apiRespoResto =  [
           {
             
@@ -1330,14 +1331,14 @@ const BodyComponent = () => {
             }}/>
 
 
-            <button onClick={() => {
+            <button className="btn btn-warning" onClick={() => {
                  /// Filter the RestoData by SearchText
                  alert(searchText);
             }}>Search</button>
           </div>
             <div className="top-rated">
                 <button
-                className="top-resto"
+                className="btn btn-primary"
                 onClick={ () => {
                     let filtredResto = restorentData.filter( (resto) => resto.avgRating > 4);
                    /// console.log(filtredResto);
@@ -1347,12 +1348,16 @@ const BodyComponent = () => {
                 >Top Rated Resto
                 </button>
             </div>
-            <div className="resto-container">  
+            <div className="row">  
+           
             {
                restorentData.map( (restrorent) => ( 
+                <div className="col">
                <RestoComponent restoData = {restrorent} />
+               </div>
                ))
             }
+            
             </div>
         </div>
     )

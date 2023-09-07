@@ -7,6 +7,7 @@ import About from "./components/About.js";
 import Service from "./components/Services.js";
 import Error from "./components/Error.js";
 import Topoffers from "./components/Topoffers.js";
+import RestoMenu from "./components/RestoMenu.js";
 import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from "react-router-dom";
 
 
@@ -59,7 +60,11 @@ const AppLayout = () => {
             {
                 path: "/topoffers",
                 element: <Topoffers></Topoffers>
-            }
+            },
+            {
+                path: "/restomenu/:restoId",
+                element: <RestoMenu></RestoMenu>
+            },
         ],
         errorElement: <Error></Error>
     },

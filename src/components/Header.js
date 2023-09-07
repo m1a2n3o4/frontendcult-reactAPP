@@ -15,13 +15,12 @@ const HeaderComponent = () => {
             <img src={SITE_LOGO} alt="log"></img>
          </div>
          <div className="navitem">
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/service">Services</Link></li>
-                <li><Link to="/topoffers">Top-offers</Link></li>
-                <li>My card</li>
-                <button className="btn" onClick={ () => {
+            <ul className="nav">
+                <li className="nav-item"><Link className="nav-item" to="/">Home</Link></li>
+                <li className="nav-item"><Link className="nav-item" to="/about">About</Link></li>
+                <li className="nav-item"><Link className="nav-item" to="/service">Services</Link></li>
+                <li className="nav-item"><Link className="nav-item" to="/topoffers">Top-offers</Link></li>
+                <button className="btn btn-danger" onClick={ () => {
                   btnName == "Login" ? setbtnName("Logout") : setbtnName("Login");
                 }}
                  value="Login">{btnName}</button>
