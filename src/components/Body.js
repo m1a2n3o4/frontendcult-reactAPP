@@ -2,6 +2,7 @@ import RestoComponent from "./Resto";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
  
 
 const BodyComponent = () => {
@@ -15,6 +16,8 @@ const BodyComponent = () => {
 
     useEffect( () => {
       fectData();
+      fgsdfgsdfg();
+      wtsonyourmins();
     }, []);
    
     const fectData = async() => {
@@ -1353,7 +1356,7 @@ const BodyComponent = () => {
             {
                restorentData.map( (restrorent) => ( 
                 <div className="col">
-               <RestoComponent restoData = {restrorent} />
+              <Link to={"restomenu/" + restrorent.id }> <RestoComponent restoData = {restrorent} /> </Link>
                </div>
                ))
             }

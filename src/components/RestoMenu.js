@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Shimmer from "./Shimmer";
-
+import { useParams } from "react-router-dom";
+import { API_RESTOMENU } from "../utils/constants";
 const RestoMenu = () => {
 
     const [restoInfo, setrestoInfo] = useState(null);
+
+    const { restoId} = useParams();
+    console.log(restoId);
 
     useEffect( () => {
         getRestoMenu();
@@ -13,7 +17,7 @@ const RestoMenu = () => {
     const getRestoMenu = async() => {
      
         try {
-            const restoRespo = await axios.get("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.4241693&lng=78.3476283&restaurantId=244361&catalog_qa=undefined&submitAction=ENTER");
+            const restoRespo = await axios.get(API_RESTOMENU+restoId);
             console.log(restoRespo.data);
             setrestoInfo(restoRespo.data);
             
@@ -24,14 +28,21 @@ const RestoMenu = () => {
 
     };
 
-    if(restoInfo === null) { return <Shimmer></Shimmer>}
+    if(restoInfo === null) { return <Shimmer></Shimmer>};
+
+    const {name, areaName, avgRating, city, cuisines } = restoInfo.data.cards[0].card.card.info;
+    const { itemCards }= restoInfo.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
     return (
         <div className="menu-items">
-            <h1>{restoInfo.data.cards[0].card.card.info.name}</h1>
-            <h2>Type of menu</h2>
+            <h1>{name}</h1>
+            <h2>{areaName}</h2>
+            <h3>{city}</h3>
+            <h2>{cuisines.join(",")}</h2>
+            <p>{avgRating}</p>
             <ul className="list-group">
-                <li className="list-group-item">Onine Dosa - 200</li>
-                <li className="list-group-item">Onine Dosa2 - 200</li>
+                { itemCards.map( (item) => 
+                <li className="list-group-item">{item.card.info.name} - {item.card.info.price}</li>
+                )}
             </ul>
         </div>
 
