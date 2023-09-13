@@ -51,7 +51,7 @@ const HomepageComponent = () => (
    
 
 
-console.log(h1tag);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

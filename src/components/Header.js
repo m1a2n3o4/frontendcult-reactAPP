@@ -6,7 +6,7 @@ const HeaderComponent = () => {
 
     const [btnName, setbtnName]= useState("Login");
     
-    console.log("Hey rect");
+  
     
    
     return (

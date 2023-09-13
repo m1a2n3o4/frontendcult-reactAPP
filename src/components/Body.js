@@ -1,9 +1,8 @@
-import RestoComponent from "./Resto";
+import RestoComponent, { withOnefeeDeliveryLabel } from "./Resto";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
- 
 
 const BodyComponent = () => {
 
@@ -12,18 +11,21 @@ const BodyComponent = () => {
     let [restorentData, filteredRestrunts] = useState([]);
 
     const [searchText, setsearchText] = useState("");
-    console.log('Rendering Copmonent');
+
+    // How to use HOF as a simple component.
+    const RestoWithOnefreeLabeled = withOnefeeDeliveryLabel(RestoComponent);
+    // <RestoWithOnefreeLabeled/>
+    // console.log('Rendering Copmonent');
 
     useEffect( () => {
       fectData();
-      fgsdfgsdfg();
-      wtsonyourmins();
     }, []);
    
     const fectData = async() => {
-    //  const resdata = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4241693&lng=78.3476283&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-   //   const orginalData = await resdata.json();
-    // const apiRestolist = orginalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+     const resdata = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4241693&lng=78.3476283&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    // console.log(resdata);
+     // const orginalData = await resdata.json();
+    // const apiRespoResto = orginalData.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
      const apiRespoResto =  [
           {
             
@@ -33,6 +35,7 @@ const BodyComponent = () => {
               locality: "Indiranagar",
               areaName: "Gachibowli",
               costForTwo: "₹250 for two",
+              oneFreedelivery : true,
               cuisines: [
                 "South Indian",
                 "North Indian",
@@ -125,6 +128,7 @@ const BodyComponent = () => {
               cloudinaryImageId: "p4znxkstyrdobxwl6rxa",
               locality: "Raheja Mindspace",
               areaName: "Madhapur",
+              oneFreedelivery : true,
               costForTwo: "₹150 for two",
               cuisines: [
                 "Bakery",
@@ -248,6 +252,7 @@ const BodyComponent = () => {
               locality: "The Platina",
               areaName: "Gachibowli",
               costForTwo: "₹400 for two",
+              oneFreedelivery : true,
               cuisines: [
                 "Beverages",
                 "Cafe",
@@ -337,6 +342,7 @@ const BodyComponent = () => {
               locality: "Manikonda",
               areaName: "Sri Laxmi Nagar Colony",
               costForTwo: "₹200 for two",
+              oneFreedelivery : false,
               cuisines: [
                 "Healthy Food",
                 "South Indian",
@@ -448,6 +454,7 @@ const BodyComponent = () => {
               cloudinaryImageId: "th8hw8gk6cdo4qir3jmy",
               locality: "Opp. Shilparamam",
               areaName: "Surya Enclave",
+              oneFreedelivery : false,
               costForTwo: "₹500 for two",
               cuisines: [
                 "North Indian",
@@ -535,6 +542,7 @@ const BodyComponent = () => {
               cloudinaryImageId: "x8hdnoeard8p2bs2ugdi",
               locality: "Serilingampally",
               areaName: "Nanakramguda",
+              oneFreedelivery : true,
               costForTwo: "₹500 for two",
               cuisines: [
                 "Bakery",
@@ -641,6 +649,7 @@ const BodyComponent = () => {
               locality: "Kothaguda",
               areaName: "Kondapur",
               costForTwo: "₹250 for two",
+              oneFreedelivery : false,
               cuisines: [
                 "Sweets",
                 "Desserts",
@@ -752,6 +761,7 @@ const BodyComponent = () => {
               cloudinaryImageId: "1bb959b81c6f9cf2b65d9b778f3383fa",
               locality: " Ravi Colony",
               areaName: "Kondapur",
+              oneFreedelivery : false,
               costForTwo: "₹250 for two",
               cuisines: [
                 "Barbecue",
@@ -861,6 +871,7 @@ const BodyComponent = () => {
               cloudinaryImageId: "hgqmskqasnty663d3qhs",
               locality: "Maseed band Village",
               areaName: "Gachibowli",
+              oneFreedelivery : false,
               costForTwo: "₹250 for two",
               cuisines: [
                 "Continental",
@@ -945,6 +956,7 @@ const BodyComponent = () => {
               name: "Samosa Singh",
               cloudinaryImageId: "77baefd8a5e319c828b4d7dff7260644",
               locality: "Manikonda",
+              oneFreedelivery : true,
               areaName: "Sri Laxmi Nagar Colony",
               costForTwo: "₹150 for two",
               cuisines: [
@@ -1356,7 +1368,12 @@ const BodyComponent = () => {
             {
                restorentData.map( (restrorent) => ( 
                 <div className="col">
-              <Link to={"restomenu/" + restrorent.id }> <RestoComponent restoData = {restrorent} /> </Link>
+                <Link to={"restomenu/" + restrorent.id }>
+                { /** here need to check weather do we have one fre delivery condition or not */
+                   restrorent.oneFreedelivery ? <RestoWithOnefreeLabeled restoData = {restrorent}/> :  <RestoComponent restoData = {restrorent} /> 
+                }
+
+                </Link>
                </div>
                ))
             }

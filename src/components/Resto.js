@@ -1,7 +1,6 @@
 import {PRODUCT_IMG_BASEURL} from "../utils/constants"
 
 const RestoComponent = (props) => {
-    // console.log(props);
     const {restoData} = props;
      return (
          <div className="resto">
@@ -17,5 +16,21 @@ const RestoComponent = (props) => {
          </div>
      )
  };
+
+ // Highr order function
+ // Input/component (Resto Component) => PrintLabel(onefree) => retunr As new component.
+
+ export const withOnefeeDeliveryLabel = (RestoComponent) => {
+    return (props) => {
+        return (
+            // Add the lable
+            <div>
+               <label className="bg-dark text-white">free Delivery.</label>
+               <RestoComponent {...props}/>
+            </div>
+        );
+    }
+ }
+
 
  export default RestoComponent;
